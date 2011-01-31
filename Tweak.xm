@@ -1,4 +1,3 @@
-
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
@@ -72,6 +71,12 @@ static BOOL enabled = nil;
 %end
 
 %hook BrowserButtonBar
+
+// Fix this syntax when I find out the correct one!
+%new(v@:cc)
+- (BOOL)privateEnabled {
+	return enabled;
+}
 
 %new(v@:cc)
 - (void)setPrivate:(BOOL)priv animated:(BOOL)animated {
