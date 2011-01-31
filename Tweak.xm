@@ -72,8 +72,7 @@ static BOOL enabled = nil;
 
 %hook BrowserButtonBar
 
-// Fix this syntax when I find out the correct one!
-%new(v@:cc)
+%new(c@:)
 - (BOOL)privateEnabled {
 	return enabled;
 }
