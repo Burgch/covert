@@ -72,11 +72,6 @@ static BOOL enabled = nil;
 
 %hook BrowserButtonBar
 
-%new(c@:)
-- (BOOL)privateEnabled {
-	return enabled;
-}
-
 %new(v@:cc)
 - (void)setPrivate:(BOOL)priv animated:(BOOL)animated {
 	if (animated) {
@@ -112,6 +107,11 @@ static BOOL enabled = nil;
 %end
 
 %hook BrowserController
+
+%new(c@:)
+- (BOOL)covertEnabled {
+	return enabled;
+}
 
 - (void)addRecentSearch:(id)search {
 	if (!enabled) %orig;
